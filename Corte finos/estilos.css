@@ -1,0 +1,660 @@
+/* Variables de color: Priorizando vino (#841C26) sobre negro (#121619) */
+:root {
+    --primary-color: #841C26; /* Vino como color principal */
+    --secondary-color: #EDE6F2; /* Crema clara para fondos */
+    --accent-color: #A37C40; /* Bronce para detalles */
+    --dark-bg: #121619; /* Negro para fondo secundario */
+    --text-light: #FFFFFF; /* Blanco para texto claro */
+}
+
+/* Estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-light);
+    background-color: var(--primary-color); /* Fondo principal en vino */
+}
+
+.portfolio {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "hero"
+        "about"
+        "projects"
+        "skills"
+        "contact"
+        "footer"
+        "footer-bottom";
+    grid-template-rows: auto auto auto auto auto auto auto auto;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    grid-area: header;
+    background-color: var(--primary-color); /* Vino para el header */
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    border-radius: var(--radius-md);
+}
+
+.header__logo img {
+    height: 60px;
+    margin-right: 1rem;
+    animation: float 3s ease-in-out infinite
+}
+
+.header__logo h3 {
+    
+    color: var(--secondary-color);
+    font-family: 'Fira Code', monospace;
+     animation: float 3s ease-in-out infinite
+}
+@keyframes float {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+.header__menu-toggle {
+    display: none;
+}
+
+.header__menu-button {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.header__menu-button span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    margin: 2px 0;
+}
+
+.nav {
+    flex-grow: 1;
+}
+
+.nav__list {
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+}
+
+.nav__item {
+    margin-left: 2rem;
+}
+
+.nav__link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav__link:hover,
+.nav__link--active {
+    color: var(--text-light);
+}
+
+.marco_carrito {
+        /* background-color: bisque; */
+        /* margin-right: 10px; */
+        width: 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        a {
+          /* background-color: aqua; */
+          display: block;
+          margin-top: 20px;
+          img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-bottom: 5px;
+          }
+        }
+        h3 {
+          color: white;
+          text-align: center;
+          font-size: 12px;
+          font-weight: bold;
+        }
+      }
+/* ========== ESTILOS PARA CARRITO DE COMPRAS ========== */
+.marco.carrito {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px 15px;
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 0px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    max-width: 200px;
+}
+
+.marco.carrito:hover {
+    background-color: #e9ecef;
+    border-color: #007bff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.marco.carrito a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.marco.carrito img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.marco.carrito:hover img {
+    transform: scale(1.1);
+}
+
+.marco.carrito h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.marco.carrito:hover h3 {
+    color: #007bff;
+}
+
+/* Versión alternativa más compacta */
+.marco.carrito.compacto {
+    padding: 6px 12px;
+    max-width: 160px;
+}
+
+.marco.carrito.compacto img {
+    width: 24px;
+    height: 24px;
+}
+
+.marco.carrito.compacto h3 {
+    font-size: 12px;
+}
+
+/* Versión con contador de productos (opcional) */
+.marco.carrito .contador {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #dc3545;
+    color: rgb(183, 25, 25);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Para dispositivos móviles */
+@media (max-width: 768px) {
+    .marco.carrito {
+        max-width: 140px;
+        padding: 6px 10px;
+        gap: 8px;
+    }
+    
+    .marco.carrito img {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .marco.carrito h3 {
+        font-size: 11px;
+    }
+}
+
+/* Hero */
+.hero {
+    grid-area: hero;
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--accent-color);/* Bronce para diferenciar del menú */
+}
+
+.hero__title {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    font-family: 'Fira Code', monospace;
+}
+
+.hero__subtitle {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+.hero__description {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: var(--text-light);
+}
+
+.hero__buttons .button {
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    margin: 0 1rem;
+    border-radius: 5px;
+}
+
+.button--primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.button--secondary {
+    background-color: var(--secondary-color);
+    color: var(--dark-bg);
+}
+
+/* About */
+.about {
+    grid-area: about;
+    padding: 4rem 2rem;
+    background-color: var(--secondary-color); /* Crema para contraste */
+    color: var(--dark-bg);
+}
+
+.about__header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about__content {
+    order: 1; /* Texto a la izquierda */
+}
+
+.about__image {
+    order: 2; /* Imagen a la derecha */
+}
+
+.about__title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.about__text {
+    margin-bottom: 1rem;
+}
+
+.about__image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Projects (Catálogo) */
+.projects {
+    grid-area: projects;
+    padding: 4rem 2rem;
+    background-color: var(--primary-color); /* Vino como fondo principal */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects__title {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.projects__subtitle {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    min-height: 400px; /* Ensure enough space for cards */
+}
+
+.project-card {
+    perspective: 850px;
+    height: 350px; /* Increased height to accommodate image */
+}
+
+.project-card__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+}
+
+.project-card:hover .project-card__inner {
+    transform: rotateY(180deg);
+}
+
+.project-card__front,
+.project-card__back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+    color: var(--dark-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-card__image {
+    width: 100%;
+    height: 150px; /* Fixed height for images */
+    object-fit: cover; /* Ensure images scale properly */
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.project-card__back {
+    transform: rotateY(180deg);
+}
+
+.project-card__title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-card__description {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-card__price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.cart-checkbox {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--dark-bg);
+}
+
+.cart-checkbox input {
+    margin-right: 0.5rem;
+}
+
+.project-card__back-text {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-card__back-button {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    align-self: flex-start;
+}
+
+/* Skills (Soporte) */
+.skills {
+    grid-area: skills;
+    padding: 4rem 2rem;
+    background-color: var(--secondary-color); /* Crema para contraste */
+    color: var(--dark-bg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skills__title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.skills__subtitle {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.skills__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background-color: var(--primary-color); /* Vino para las categorías */
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.skill__name {
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+/* Contact */
+.contact {
+    grid-area: contact;
+    padding: 4rem 2rem;
+    background-color: var(--primary-color); /* Vino como fondo principal */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact__title {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.contact__subtitle {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.contact__info {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+}
+
+.contact-item__icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.contact-item__content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    color: var(--text-light);
+}
+
+.contact-item__content p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.form__group {
+    margin-bottom: 1rem;
+}
+
+.form__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.form__input,
+.form__textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: var(--dark-bg);
+}
+
+.form__button {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form__button:hover {
+    background-color: #8A6132; /* Manual adjustment for darker bronze */
+}
+
+/* Footer Principal */
+.footer {
+    grid-area: footer;
+    padding: 2rem;
+    background-color: var(--primary-color); /* Vino para el footer */
+    text-align: center;
+}
+
+.footer__social .social-link {
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    color: var(--secondary-color);
+}
+
+.footer__text {
+    color: var(--text-light);
+    margin-top: 1rem;
+}
+
+/* Pie de Página Final */
+.footer-bottom {
+    grid-area: footer-bottom;
+    padding: 1rem;
+    background-color: var(--dark-bg); /* Negro para diferenciar */
+    text-align: center;
+    color: var(--text-light);
+}
+
+.footer-bottom__text {
+    font-size: 0.9rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .header__menu-toggle {
+        display: block;
+    }
+
+    .header__menu-button {
+        display: flex;
+    }
+
+    .nav {
+        display: none;
+        width: 100%;
+    }
+
+    .nav__list {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav__item {
+        margin: 1rem 0;
+    }
+
+    #menu-toggle:checked ~ .nav {
+        display: block;
+    }
+
+    .about__header {
+        grid-template-columns: 1fr; /* Apila en móvil */
+        grid-template-areas:
+            "content"
+            "image";
+    }
+
+    .about__content {
+        order: 1;
+    }
+
+    .about__image {
+        order: 2;
+    }
+
+    .projects__grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+    }
+
+    .project-card {
+        height: 400px; /* Adjust height for mobile to fit image */
+    }
+
+    .project-card__image {
+        height: 200px; /* Slightly larger images on mobile */
+    }
+
+}
